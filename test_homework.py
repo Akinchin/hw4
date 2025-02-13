@@ -1,4 +1,5 @@
 import math
+from random import randint
 
 def test_greeting():
     """
