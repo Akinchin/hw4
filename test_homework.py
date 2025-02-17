@@ -1,6 +1,8 @@
 import math
 from random import randint
 
+import pytest
+
 
 def test_greeting():
     """
@@ -50,19 +52,22 @@ def test_circle():
     assert length == 144.51326206513048
 
 
-def test_random_list():
-    """
-    Создайте список из 10 случайных чисел от 1 до 100 (включая обе границы) и отсортируйте его по возрастанию.
-    """
-    # TODO создайте список
-    from random import randint
+@pytest.mark.parametrize('execution_number', range(50))
+def test_random_list(execution_number):
 
-    l = [randint(a=1, b=101) for i in range(10) ]
-    l.sort()
 
-    assert len(l) == 10
-    assert all(l[i] <= l[i + 1] for i in range(len(l) - 1))
+    ("\n"
+     "Создайте список из 10 случайных чисел от 1 до 100 (включая обе границы) и отсортируйте его по возрастанию.\n")
+# TODO создайте список
+from random import randint
 
+l = [randint(a=1, b=101) for i in range(10)]
+l.sort()
+
+print(l)
+assert l[9] < 101
+assert len(l) == 10
+assert all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
 def test_unique_elements():
     """
@@ -93,3 +98,6 @@ def test_dicts():
     assert len(d) == 5
     assert list(d.keys()) == first
     assert list(d.values()) == second
+
+
+
