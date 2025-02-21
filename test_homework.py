@@ -54,20 +54,17 @@ def test_circle():
 
 @pytest.mark.parametrize('execution_number', range(50))
 def test_random_list(execution_number):
+    """
+    Создайте список из 10 случайных чисел от 1 до 100 (включая обе границы) и отсортируйте его по возрастанию.
+    """
+    # TODO создайте список
+    l = [randint(1, 100) for _ in range(10)]
+    l.sort()
 
-
-    ("\n"
-     "Создайте список из 10 случайных чисел от 1 до 100 (включая обе границы) и отсортируйте его по возрастанию.\n")
-# TODO создайте список
-from random import randint
-
-l = [randint(a=1, b=101) for i in range(10)]
-l.sort()
-
-print(l)
-assert l[9] < 101
-assert len(l) == 10
-assert all(l[i] <= l[i + 1] for i in range(len(l) - 1))
+    print(l)
+    assert l[9] < 101
+    assert len(l) == 10
+    assert all(l[i] <= l[i + 1] for i in range(len(l) - 1))
 
 def test_unique_elements():
     """
